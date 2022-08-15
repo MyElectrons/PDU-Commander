@@ -34,7 +34,7 @@ parser.add_argument('-t', '--tout', type=int, help='Telnet timeout, default=7 (s
 parser.add_argument("-d", "--debug", action="store_true", help="log debug messages in addition to info and errors")
 vq_grp = parser.add_mutually_exclusive_group()
 vq_grp.add_argument("-v", "--verbosity", action="count", default=0, help="increase output verbosity on stdout: -v or -vv")
-vq_grp.add_argument("-q", "--quiet", action="store_true", help="only output responces to \"get\" requests")
+vq_grp.add_argument("-q", "--quiet", action="store_true", help="only output responses to \"get\" requests")
 parser.add_argument('commands', metavar='command:argument', type=str, nargs='*', #action='append',
                     help='commands to be executed')
 args = parser.parse_args()
