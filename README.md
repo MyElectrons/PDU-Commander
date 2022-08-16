@@ -22,9 +22,9 @@ By the way the same applies to another brand and/or SKU of the PDU or UPS or... 
  
 ### All defaults
 Give it no parameters - it will go to "ap7901" (it should be a DNS-resolvable name) and retrieve its status:
-```
-./pdu-commander.py
-```
+<pre>
+<b>./pdu-commander.py</b>
+</pre>
 ```
 Address: ap7901
 Unit ID: ap7901
@@ -43,9 +43,9 @@ It will use the default APC username and password, telnet port 23, 7 seconds for
  
 ### Turn one outlet ON
 Actionable commands consist of a command and its argument, divided by a column ':'
-```
-./pdu-commander.py on:1
-```
+<pre>
+<b>./pdu-commander.py on:1</b>
+</pre>
 ```
 Address: ap7901
 Unit ID: ap7901
@@ -55,9 +55,9 @@ Outlets: 8
 ```
  
 ### A sequence of ON and OFF commands with a 3 seconds delay between them
-```
-./pdu-commander.py on:1-2,8 delay:3 off:all
-```
+<pre>
+<b>./pdu-commander.py on:1-2,8 delay:3 off:all</b>
+</pre>
 ```
 Address: ap7901
 Unit ID: ap7901
@@ -80,9 +80,9 @@ Outlets: 8
 There could be as many commands called in one sequence as needed.
 
 ### Connection details can be specified
-```
-./pdu-commander.py -a 192.168.7.242 -u device -p your_password "on: 1-2, 8" "delay: 3" "off: 2"
-```
+<pre>
+<b>./pdu-commander.py -a 192.168.7.242 -u device -p your_password "on: 1-2, 8" "delay: 3" "off: 2"</b>
+</pre>
 ```
 Address: 192.168.7.242
 Unit ID: ap7902
@@ -98,9 +98,9 @@ Outlets: 16
 Note that the command:argument parameters must be passed as a single argument - hence if you like or need to use spaces in them, please remember to put quotes around each "command : argument" pair.
  
 ### Read current and power, and be quiet
-```
-./pdu-commander.py -q -a 192.168.7.242 get:current get:power
-```
+<pre>
+<b>./pdu-commander.py -q -a 192.168.7.242 get:current get:power</b>
+</pre>
 ```
 Current on bank 1 is 1.4A
 Current on bank 2 is 0.0A
@@ -110,9 +110,9 @@ Current on total is 1.4A
 ```
  
 ### There's HELP, when needed
-```
-./pdu-commander.py -h
-```
+<pre>
+<b>./pdu-commander.py -h</b>
+</pre>
 ```
 usage: pdu-commander.py [-h] [-a ADDR] [-u USER] [-p PSWD] [-P PORT] [-t TOUT] [-d] [-v | -q] [command:argument [command:argument ...]]
  
