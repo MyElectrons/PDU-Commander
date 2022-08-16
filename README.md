@@ -1,4 +1,4 @@
-# Command Line Interface (CLI) and Sequencer with Python integration for APC ap7900 and other compatible Power Distribution Units (PDU)
+# Command Line Interface (CLI) and Sequencer with Python (bash, sh, other scripts) integration for APC ap7900 and other compatible Power Distribution Units (PDU)
  
 While AP79xx(b) are versatile PDU devices that provide a variety of access and control options, somehow there was no ready to use **CLI tool** available that one could call from the command line and tell it what sockets to switch on or off on PDU(s), or what to measure.
  
@@ -162,4 +162,4 @@ The PDU series that I tested did not support any concurrency of control sessions
  
 *Happy controlling!*
 
--- :heart: Serge.
+-- :heart: -- Serge.
