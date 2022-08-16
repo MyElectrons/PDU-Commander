@@ -12,8 +12,8 @@ This little project covers the power control needs I had. Thanks to it I can now
 All the steps had to be done without any human interactions required - simply because I'd forget about it after a while.
  
 This project can also be used for **power monitoring** purposes. Just keep in mind that the precision of current and power measurements of the AP79xx series is somewhat low (to my taste, Ok?)
-I'd be happy to give it a try and modify and adapt this project for a perfect integration with measured PDU(s). Should you need it implemented fast - *just send me a unit that needs to be supported*.
-By the way same applies to another brand and/or SKU of the PDU or UPS or... :wink:
+I'd be happy to give it a try and modify and adapt this project for a perfect integration with measured PDU(s). Should you need it implemented fast - *just send a unit that needs to be supported my way*.
+By the way the same applies to another brand and/or SKU of the PDU or UPS or... :wink:
  
 ## Prerequisites
 **python3** version 3.7 and up
@@ -97,7 +97,7 @@ Outlets: 16
 ```
 Note that the command:argument parameters must be passed as a single argument - hence if you like or need to use spaces in them, please remember to put quotes around each "command : argument" pair.
  
-### Read the current and power, and be quiet
+### Read current and power, and be quiet
 ```
 ./pdu-commander.py -q -a 192.168.7.242 get:current get:power
 ```
@@ -150,7 +150,7 @@ Usually delays shorter than 60 seconds are safe.
 Should you need a longer pause between certain actions - it's better to invoke the `pdu-commander.py` again later, after the needed long delay has passed.
  
 ### Logging
-The script will record all its actions into a log file "pdu-log.log" in the current directory. The file gets appended with every script invocation. Should you need to use another logging facility and/or functionality - just let me know, or code it away in the `pdulog.py` module.
+The script will record all its actions into a log file `pdu-log.log` in the current directory. The file gets appended with every script invocation. Should you need to use another logging facility and/or functionality - just let me know, or code it away in the `pdulog.py` module.
  
 ### Concurrent sessions
 The PDU series that I tested did not support any concurrency of control sessions. Therefore in order to use this project successfully please make sure all the configuration of the unit(s) is done, completed, and sessions are closed or logged-out before the `pdu-commander.py` script invocation.
@@ -160,4 +160,5 @@ The PDU series that I tested did not support any concurrency of control sessions
 - ap7902 - :thumbsup:
  
 *Happy controlling!*
-- Serge.
+
+-- :heart: Serge.
