@@ -56,26 +56,27 @@ Outlets: 8
  
 ### A sequence of ON and OFF commands with a 3 seconds delay between them
 <pre>
-<b>./pdu-commander.py on:1-2,8 delay:3 off:all</b>
+<b>./pdu-commander.py on:1-3,8 delay:3 off:all</b>
 </pre>
 ```
 Address: ap7901
 Unit ID: ap7901
 Outlets: 8
-('on', '1-2,8')
-1: Outlet 1       : Outlet Turned On
-2: Outlet 2       : Outlet Turned On
-8: Outlet 8       : Outlet Turned On
+('on', '1-3,8')
+ 1: Outlet 1       : Outlet Turned On
+ 2: Outlet 2       : Outlet Turned On
+ 3: Outlet 3       : Outlet Turned On
+ 8: Outlet 8       : Outlet Turned On
 ('delay', '3')
 ('off', 'all')
-1: Outlet 1       : Outlet Turned Off
-2: Outlet 2       : Outlet Turned Off
-3: Outlet 3       : Outlet Turned Off
-4: Outlet 4       : Outlet Turned Off
-5: Outlet 5       : Outlet Turned Off
-6: Outlet 6       : Outlet Turned Off
-7: Outlet 7       : Outlet Turned Off
-8: Outlet 8       : Outlet Turned Off
+ 1: Outlet 1       : Outlet Turned Off
+ 2: Outlet 2       : Outlet Turned Off
+ 3: Outlet 3       : Outlet Turned Off
+ 4: Outlet 4       : Outlet Turned Off
+ 5: Outlet 5       : Outlet Turned Off
+ 6: Outlet 6       : Outlet Turned Off
+ 7: Outlet 7       : Outlet Turned Off
+ 8: Outlet 8       : Outlet Turned Off
 ```
 There could be as many commands called in one sequence as needed.
 
