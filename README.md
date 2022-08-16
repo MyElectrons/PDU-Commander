@@ -1,21 +1,22 @@
 # Command Line Interface (CLI) and Sequencer with Python integration for APC ap7900 and other compatible Power Distribution Units (PDU)
  
-While AP79xx(b) are versatile PDU devices that provide a variety of access and control options, somehow there was no ready to use **CLI tool** that one could call from the command line and tell it what sockets to switch on or off on PDU(s), or what to measure.
+While AP79xx(b) are versatile PDU devices that provide a variety of access and control options, somehow there was no ready to use **CLI tool** available that one could call from the command line and tell it what sockets to switch on or off on PDU(s), or what to measure.
  
-There were several sketches I could find on the Net, these would potentially make PDU's controllable from scripts, mostly using telnet in conjunction with pexpect, as well as SNMP. However, those were only sketches and still required a lot of tinkering; none of the predecessors provided even a rudimentary error handling.
+There were several sketches I found on the Net, these would potentially make PDU's controllable from scripts, mostly using telnet in conjunction with pexpect, as well as SNMP. However, those were only sketches and still required a lot of tinkering; none of the predecessor projects that I've seen provided even a rudimentary error handling.
  
-This little project covers the power control needs I had. Thanks to it I can run a chron-job that will:
-1) **Power up** the backup rig (and *do it in a proper staged way*),
+This little project covers the power control needs I had. Thanks to it I can now run a chron-job that will:
+1) **Power up** the backup rig (and *do it in a properly staged way*),
 2) Perform backups (this part is obviously outside of the scope of this project),
 3) **Power it down** completely (*eliminating wasting of dozens of Watts by standby PSUs power draw*).
  
-All the steps had to be done without any human interactions required - simply because I'd forget about it after a while :)
+All the steps had to be done without any human interactions required - simply because I'd forget about it after a while.
  
-This project can also be used for **power monitoring** purposes. Just keep in mind that the precision of current (and hence power) measurements of the AP79xx series is somewhat low (to my taste, Ok?)
-I'd be happy to give it a try and modify and adapt this project for a perfect integration with measured PDU(s). Should you need it fast - just send me a unit you need this project to support ;)
+This project can also be used for **power monitoring** purposes. Just keep in mind that the precision of current and power measurements of the AP79xx series is somewhat low (to my taste, Ok?)
+I'd be happy to give it a try and modify and adapt this project for a perfect integration with measured PDU(s). Should you need it implemented fast - *just send me a unit that needs to be supported*.
+By the way same applies to another brand and/or SKU of the PDU or UPS or... :wink:
  
 ## Prerequisites
-python3 version 3.7 and up
+**python3** version 3.7 and up
  
 ## Usage Examples
  
@@ -53,7 +54,7 @@ Outlets: 8
 1: Outlet 1       : Outlet Turned On
 ```
  
-### A sequence of ON and OFF commands with a 3 seconds delay in between
+### A sequence of ON and OFF commands with a 3 seconds delay between them
 ```
 ./pdu-commander.py on:1-2,8 delay:3 off:all
 ```
@@ -76,7 +77,8 @@ Outlets: 8
 7: Outlet 7       : Outlet Turned Off
 8: Outlet 8       : Outlet Turned Off
 ```
- 
+There could be as many commands called in one sequence as needed.
+
 ### Connection details can be specified
 ```
 ./pdu-commander.py -a 192.168.7.242 -u device -p your_password "on: 1-2, 8" "delay: 3" "off: 2"
@@ -134,24 +136,28 @@ optional arguments:
  -q, --quiet           only output responses to "get" requests
  
 If called without command:argument parameters the script will execute "get:status"
- 
-Copyright (c) : MyElectrons.com
+
+Copyright (c) MyElectrons.com, 2022
 ```
- 
+
 ## Things to remember
  
 ### Maximum delays
-Each script invocation opens a telnet session and executes all commands within that session. That said - the delays cannot be longer than the telnet session timeout (as configured in device settings).
+Each `pdu-commander.py` script invocation opens a single telnet session and executes all commands within that session. That said - the delays cannot be longer than the telnet session timeout (as configured in device settings).
  
 Usually delays shorter than 60 seconds are safe.
  
-Should you need a longer pause between certain actions - it's better to invoke the "pdu-commander.py" again later, after the needed long delay has passed.
+Should you need a longer pause between certain actions - it's better to invoke the `pdu-commander.py` again later, after the needed long delay has passed.
  
 ### Logging
-The script will record all its actions into a log file "pdu-log.log". The file gets appended with every script invocation. Should you need to use another logging facility and/or functionality - just let me know, or code it away in the pdulog.py module.
+The script will record all its actions into a log file "pdu-log.log" in the current directory. The file gets appended with every script invocation. Should you need to use another logging facility and/or functionality - just let me know, or code it away in the `pdulog.py` module.
  
 ### Concurrent sessions
-The PDU series that I tested did not support any concurrency of control access/ sessions. Therefore in order to use this project successfully please make sure all the configuration of the unit(s) is done, completed, and sessions are closed or logged-out before the "pdu-commander.py" script invocation.
+The PDU series that I tested did not support any concurrency of control sessions. Therefore in order to use this project successfully please make sure all the configuration of the unit(s) is done, completed, and sessions are closed or logged-out before the `pdu-commander.py` script invocation.
+
+## Tested thoroughly with
+- ap7901 - :thumbsup:
+- ap7902 - :thumbsup:
  
 *Happy controlling!*
 - Serge.

@@ -23,7 +23,7 @@ parser = argparse.ArgumentParser(
 
         If called without command:argument parameters the script will execute "get:status"
 
-        Copyright (c) : MyElectrons.com
+        Copyright (c) MyElectrons.com, 2022
         ''')
     )
 parser.add_argument('-a', '--addr', help='IP address or DNS-resolvable host name of PDU')
