@@ -12,7 +12,7 @@ import telnetlib
 import time
 import re
 
-def_host = 'ap7901' # hostname or IP address
+def_host = 'ap7900' # hostname or IP address
 def_user = 'device'
 def_pswd = 'apc'
 

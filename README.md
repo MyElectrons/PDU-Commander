@@ -47,8 +47,8 @@ Actionable commands consist of a command and its argument, divided by a column '
 <b>./pdu-commander.py on:1</b>
 </pre>
 ```
-Address: ap7901
-Unit ID: ap7901
+Address: ap7900
+Unit ID: ap7900
 Outlets: 8
 ('on', '1')
 1: Outlet 1       : Outlet Turned On
@@ -127,7 +127,7 @@ positional arguments:
  
 optional arguments:
  -h, --help            show this help message and exit
- -a ADDR, --addr ADDR  IP address or DNS-resolvable host name of PDU
+ -a ADDR, --addr ADDR  IP address or DNS-resolvable host name of PDU, default="ap7900"
  -u USER, --user USER  username, default="device"
  -p PSWD, --pswd PSWD  password, default="apc"
  -P PORT, --port PORT  Telnet port, default=23
@@ -157,6 +157,7 @@ The script will record all its actions into a log file `pdu-log.log` in the curr
 The PDU series that I tested did not support any concurrency of control sessions. Therefore in order to use this project successfully please make sure all the configuration of the unit(s) is done, completed, and sessions are closed or logged-out before the `pdu-commander.py` script invocation.
 
 ## Tested thoroughly with
+- ap7900 - :thumbsup:
 - ap7901 - :thumbsup:
 - ap7902 - :thumbsup:
  

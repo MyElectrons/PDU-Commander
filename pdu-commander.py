@@ -26,7 +26,7 @@ parser = argparse.ArgumentParser(
         Copyright (c) MyElectrons.com, 2022
         ''')
     )
-parser.add_argument('-a', '--addr', help='IP address or DNS-resolvable host name of PDU')
+parser.add_argument('-a', '--addr', help='IP address or DNS-resolvable host name of PDU, default="ap7900"')
 parser.add_argument('-u', '--user', type=str, help='username, default="device"')
 parser.add_argument('-p', '--pswd', type=str, help='password, default="apc"')
 parser.add_argument('-P', '--port', type=int, help='Telnet port, default=23')
