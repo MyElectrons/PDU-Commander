@@ -59,8 +59,8 @@ Outlets: 8
 <b>./pdu-commander.py on:1-3,8 delay:3 off:all</b>
 </pre>
 ```
-Address: ap7901
-Unit ID: ap7901
+Address: ap7900
+Unit ID: ap7900
 Outlets: 8
 ('on', '1-3,8')
  1: Outlet 1       : Outlet Turned On
