@@ -2,7 +2,11 @@
 #
 # Interfacing APC PDUs via telnet "CLI"
 #
-# Tested with AP7901 and AP7902
+# This code is published under the MIT License
+# When forking, reusing and/or modifying, please retain the following line:
+# Copyright (c) MyElectrons.com; https://github.com/MyElectrons/PDU-Commander
+#
+# Tested with AP7900, AP7901, and AP7902
 
 
 from pdulog import Debg, Info, Warn, Err

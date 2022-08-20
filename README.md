@@ -138,7 +138,7 @@ optional arguments:
  
 If called without command:argument parameters the script will execute "get:status"
 
-Copyright (c) MyElectrons.com, 2022
+Copyright (c) MyElectrons.com, 2022; https://github.com/MyElectrons/PDU-Commander
 ```
 
 ## Things to remember

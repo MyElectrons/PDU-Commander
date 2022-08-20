@@ -2,6 +2,11 @@
 
 # PDU CLI Commander
 # A Command Line Interface wrapper for PDU sequencer module(s)
+#
+# This code is published under the MIT License
+# When forking, reusing and/or modifying, please retain the following line:
+# Copyright (c) MyElectrons.com; https://github.com/MyElectrons/PDU-Commander
+
 
 import pduapc
 from pdulog import Debg, Info, Err
@@ -23,7 +28,7 @@ parser = argparse.ArgumentParser(
 
         If called without command:argument parameters the script will execute "get:status"
 
-        Copyright (c) MyElectrons.com, 2022
+        Copyright (c) MyElectrons.com, 2022; https://github.com/MyElectrons/PDU-Commander
         ''')
     )
 parser.add_argument('-a', '--addr', help='IP address or DNS-resolvable host name of PDU, default="ap7900"')
