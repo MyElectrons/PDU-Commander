@@ -21,13 +21,13 @@ By the way the same applies to another brand and/or SKU of the PDU or UPS or... 
 ## Usage Examples
  
 ### All defaults
-Give it no parameters - it will go to "ap7901" (it should be a DNS-resolvable name) and retrieve its status:
+Give it no parameters - it will go to "ap7900" (it should be a DNS-resolvable name) and retrieve its status:
 <pre>
 <b>./pdu-commander.py</b>
 </pre>
 ```
-Address: ap7901
-Unit ID: ap7901
+Address: ap7900
+Unit ID: ap7900
 Outlets: 8
 ('get', 'status')
 1: ON    : Outlet 1
