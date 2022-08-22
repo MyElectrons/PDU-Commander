@@ -146,7 +146,7 @@ Copyright (c) MyElectrons.com, 2022; https://github.com/MyElectrons/PDU-Commande
 ### Maximum delays
 Each `pdu-commander.py` script invocation opens a single telnet session and executes all commands within that session. That said - the delays cannot be longer than the telnet session timeout (as configured in device settings).
  
-Usually delays shorter than 60 seconds are safe.
+Delays shorter than 60 seconds should be safe to use.
  
 Should you need a longer pause between certain actions - it's better to invoke the `pdu-commander.py` again later, after the needed long delay has passed.
  
@@ -154,7 +154,7 @@ Should you need a longer pause between certain actions - it's better to invoke t
 The script will record all its actions into a log file `pdu-log.log` in the current directory. The file gets appended with every script invocation. Should you need to use another logging facility and/or functionality - just let me know, or code it away in the `pdulog.py` module.
  
 ### Concurrent sessions
-The PDU series that I tested didn't seem to like any concurrency of control sessions. Therefore in order to use this project successfully please make sure all the configuration of the unit(s) is done, completed, and sessions are closed or logged-out before the `pdu-commander.py` script invocation.
+The PDU series that I tested didn't seem to like any concurrency of control sessions. Therefore in order to use this project successfully please make sure all the configuration of the unit(s) is done, completed, and sessions are closed or logged-out before the `pdu-commander.py` script is called.
 
 ### Give the PDU time to think
 From my experience the AP7000 series PDUs require quite some time for correct and repeatable current and power measurements.
@@ -202,11 +202,11 @@ Once ubiquitos "telephone cables" with RJ11 and four wires work perfect for this
 
 ### Notes on network configuration of APC AP79xx PDU
 
-Older devices, those without letter 'B' at the end, have an outdated "netowrk card" that does not support today's level of secure authentication algorythms.
+Older devices, those without the letter 'B' at the end, have an outdated "netowrk card" that does not support today's level of secure authentication algorythms.
 
-I had success with the **non-B** DPUs using **Telnet and HTTP only**.
+I had success with **non-B** DPUs using **Telnet and HTTP only**.
 
-In order to use HTTP one must explicitely disable HTTPS, in terminal it should look like:
+In order to use HTTP one must explicitely disable the device to use HTTPS. In terminal it should look like:
 ```
 ------- Web/SSL/TLS -----------------------------------------------------------
 
@@ -228,6 +228,7 @@ But when you click there to go to the "secure connection", browsers will refuse 
 To summarise, the solution is to go through the terminal and configure:
 ```
 (2)-Network --> (6)-Web/SSL/TLS --> (2)-SSL/TLS --> (1)-Disabled --> (6)-Accept Changes --> ESC
+
 (5)-Telnet/SSH --> (2)-Protocol Mode --> (1)-Telnet --> (6)-Accept Changes --> ESC
 ```
 
