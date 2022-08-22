@@ -82,7 +82,7 @@ There could be as many commands called in one sequence as needed.
 
 ### Connection details can be specified
 <pre>
-<b>./pdu-commander.py -a 192.168.7.242 -u device -p your_password "on: 1-2, 8" "delay: 3" "off: 2"</b>
+<b>./pdu-commander.py -a 192.168.7.242 -u device -p your_password  "on: 1-2, 8"  "delay: 3"  "off: 2"</b>
 </pre>
 ```
 Address: 192.168.7.242
@@ -96,7 +96,7 @@ Outlets: 16
 ('off', '2')
 2: Outlet 2       : Outlet Turned Off
 ```
-Note that the command:argument parameters must be passed as a single argument - hence if you like or need to use spaces in them, please remember to put quotes around each "command : argument" pair.
+Note that the `command:argument` parameters must be passed as a single argument - hence if you like or need to use spaces in them, please remember to put quotes around each `"command : argument"` pair.
  
 ### Read current and power, and be quiet
 <pre>
