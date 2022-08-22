@@ -146,12 +146,12 @@ Copyright (c) MyElectrons.com, 2022; https://github.com/MyElectrons/PDU-Commande
 ### Maximum delays
 Each `pdu-commander.py` script invocation opens a single telnet session and executes all commands within that session. That said - the delays cannot be longer than the telnet session timeout (as configured in device settings).
  
-Delays shorter than 60 seconds should be safe to use.
+Delays shorter than 60 seconds are usually safe to use.
  
-Should you need a longer pause between certain actions - it's better to invoke the `pdu-commander.py` again later, after the needed long delay has passed.
+Should you need a longer pause between certain actions - it's better to call the `pdu-commander.py` script again later, after that long delay has passed.
  
 ### Logging
-The script will record all its actions into a log file `pdu-log.log` in the current directory. The file gets appended with every script invocation. Should you need to use another logging facility and/or functionality - just let me know, or code it away in the `pdulog.py` module.
+The script will record all its actions into a log file called `pdu-log.log`, that will be stored in the current directory. The file gets appended with every script invocation. Should you need to use another logging facility and/or functionality - just let me know, or code it away in the `pdulog.py` module.
  
 ### Concurrent sessions
 The PDU series that I tested didn't seem to like any concurrency of control sessions. Therefore in order to use this project successfully please make sure all the configuration of the unit(s) is done, completed, and sessions are closed or logged-out before the `pdu-commander.py` script is called.
