@@ -12,8 +12,8 @@ This little project covers the power control needs I had. Thanks to it I can now
 All the steps had to be done without any human interactions required - simply because I'd forget about it after a while.
  
 This project can also be used for **power monitoring** purposes. Just keep in mind that the precision of current and power measurements of the AP79xx series is somewhat low (to my taste, Ok?)
-I'd be happy to give it a try and modify and adapt this project for a perfect integration with measured PDU(s). Should you need it implemented fast - *just send a unit that needs to be supported my way*.
-By the way the same applies to another brand and/or SKU of the PDU or UPS or... :wink:
+
+I'd be happy to modify and adapt this project for integrating other models (including other brands) and/or measured PDU(s), UPS, etc. Should you need it implemented fast - *just send a unit that needs to be supported my way*. :wink:
  
 ## Prerequisites
 **python3** version 3.7 and up
@@ -233,7 +233,7 @@ To summarise, the solution is to go through the terminal and configure:
 ```
 
 ### Power consumption of APC ap79xx PDU
-Even though these devices are all about the power, their "Product Datasheet" (e.g.: for [ap7900B](https://www.apc.com/us/en/product/AP7900B/rack-pdu-switched-1u-15a-100-120v-8515/)) tells us nothing about how much the device consumes. This data might be of not much relevance for big datacenters where it will be negligeable compared to other loads, but for home lab builders that can make quite a difference: In the area where we live each 10 Watts cunsumed non-stop cost roughly one US dollar per month (10 Watt ~~ $1 USD / month).
+Even though these devices are all about the power, their "Product Datasheet" (e.g.: for [ap7900B](https://www.apc.com/us/en/product/AP7900B/rack-pdu-switched-1u-15a-100-120v-8515/)) tells us nothing about how much the device consumes. This data might be of not much relevance for big datacenters where it will be negligeable compared to other loads, but for home lab builders that can make quite a difference: In the area where we live each 10 Watts cunsumed non-stop cost us roughly one US dollar per month (10 Watt ~~ $1 USD / month).
 
 Below is the data I measured with the devices at hand, using a bench-top power meter. No load connected to the outlets.
 
