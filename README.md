@@ -39,7 +39,7 @@ Outlets: 8
 7: ON    : Outlet 7
 8: ON    : Outlet 8
 ```
-It will use the default APC username and password, telnet port 23, 7 seconds for telnet timeouts.
+It will use the default APC username and password. See `./pdu-commander.py -h` for all defaults.
  
 ### Turn one outlet ON
 Actionable commands consist of a command and its argument, divided by a column ':'
