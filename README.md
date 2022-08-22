@@ -198,7 +198,7 @@ The APC spare part number: 0J-940-0144A
 If you look straigh at the APC PDU, pin #1 in RJ12 female connector will be at the bottom:
 <img src="assets/APC_rj12.jpg" width="600"/>
 
-Once ubiquitos "telephone cables" with RJ11 and four wires work perfect for this: just cut one end and solder wires into DB9.
+Once ubiquitos "telephone cables" with four wires and RJ11 connectors work perfectly for making this cable: just cut one end and solder wires into DB9.
 
 ### Notes on network configuration of APC AP79xx PDU
 
