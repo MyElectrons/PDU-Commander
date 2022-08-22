@@ -154,7 +154,7 @@ Should you need a longer pause between certain actions - it's better to invoke t
 The script will record all its actions into a log file `pdu-log.log` in the current directory. The file gets appended with every script invocation. Should you need to use another logging facility and/or functionality - just let me know, or code it away in the `pdulog.py` module.
  
 ### Concurrent sessions
-The PDU series that I tested did not support any concurrency of control sessions. Therefore in order to use this project successfully please make sure all the configuration of the unit(s) is done, completed, and sessions are closed or logged-out before the `pdu-commander.py` script invocation.
+The PDU series that I tested did seem to like any concurrency of control sessions. Therefore in order to use this project successfully please make sure all the configuration of the unit(s) is done, completed, and sessions are closed or logged-out before the `pdu-commander.py` script invocation.
 
 ## Tested thoroughly with
 - ap7900 - :thumbsup:
@@ -176,7 +176,7 @@ Source: [User Manual for APC Switched Rack Power Distribution Unit](https://down
 8. Use temporary default "apc" as both username and password
 9. System --> User Manager --> Administrator --> set **User Name** and **Password**
 
-Note: if it took longer than 30 seconds to login, the procedure will need to be repeated from step 4 above.
+Note: if it took longer than 30 seconds to login, the procedure will need to be repeated from the step 4 above.
 
 ### Serial cable pinout for APC AP7000 (and other) PDU series
 The APC spare part number: 0J-940-0144A
@@ -195,11 +195,11 @@ Once ubiquitos "telephone cables" with RJ11 and four wires work perfect for this
 
 ### Notes on network configuration of APC AP79xx PDU
 
-Older devices, those without letter 'B' at the end, have an older "netowrk card" and hence do not support today's level of secure authentication algorythms.
+Older devices, those without letter 'B' at the end, have an outdated "netowrk card" that does not support today's level of secure authentication algorythms.
 
 I had success with the **non-B** DPUs using **Telnet and HTTP only**.
 
-In order to use HTTP one must explicitely disable HTTPS, in a terminal it should look like:
+In order to use HTTP one must explicitely disable HTTPS, in terminal it should look like:
 ```
 ------- Web/SSL/TLS -----------------------------------------------------------
 
@@ -209,7 +209,6 @@ In order to use HTTP one must explicitely disable HTTPS, in a terminal it should
 Otherwise, when trying to access it via HTTP, the device will inform that it is a:
 ```
 Protected Object.
- 
 This object on the APC Management Web Server is protected and requires a secure socket connection.
 ```
 <img src="assets/APC_old_Protected_Object.png" width="400"/>
