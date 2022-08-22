@@ -160,7 +160,86 @@ The PDU series that I tested did not support any concurrency of control sessions
 - ap7900 - :thumbsup:
 - ap7901 - :thumbsup:
 - ap7902 - :thumbsup:
+
+## Management nuggets for APC AP79xx PDU series
+
+### Reset AP7900 to manufacturer defaults
+Source: [User Manual for APC Switched Rack Power Distribution Unit](https://download.schneider-electric.com/files?p_enDocType=User+guide&p_File_Name=ASTE-6Z6KAM_R0_EN.pdf&p_Doc_Ref=SPD_ASTE-6Z6KAM_EN)
+
+1. Connect the serial cable (APC part number 940-0144, see pinout below)
+2. Set serial communication parameters as follows: **9600 8N1, no flow control**
+3. In the serial terminal program check the serial communication by pressing ENTER several times - the "User Name" prompt should appear
+4. Press the RESET button (for example using a paper clip)
+5. The status light should start blinking green/orange
+6. Press the RESET button again
+7. Press ENTER repeatedly till the "User Name" prompt appears
+8. Use temporary default "apc" as both username and password
+9. System --> User Manager --> Administrator --> set **User Name** and **Password**
+
+Note: if it took longer than 30 seconds to login, the procedure will need to be repeated from step 4 above.
+
+### Serial cable pinout for APC AP7000 (and other) PDU series
+The APC spare part number: 0J-940-0144A
+
+| APC RJ12 Pin Number | PC DB9 Pin Number |
+|---|---|
+| 2 | 5 (GND) |
+| 3 | 2 (Rx) |
+| 4 | 3 (Tx) |
+| 5 | 5 (GND) |
+
+If you look straigh at the APC PDU, pin #1 in RJ12 female connector will be at the bottom:
+<img src="assets/APC_rj12.jpg" width="600"/>
+
+Once ubiquitos "telephone cables" with RJ11 and four wires work perfect for this: just cut one end and solder wires into DB9.
+
+### Notes on network configuration of APC AP79xx PDU
+
+Older devices, those without letter 'B' at the end, have an older "netowrk card" and hence do not support today's level of secure authentication algorythms.
+
+I had success with the **non-B** DPUs using **Telnet and HTTP only**.
+
+In order to use HTTP one must explicitely disable HTTPS, in a terminal it should look like:
+```
+------- Web/SSL/TLS -----------------------------------------------------------
+
+     1- Access                        : Enabled
+     2- SSL/TLS                       : Disabled
+```
+Otherwise, when trying to access it via HTTP, the device will inform that it is a:
+```
+Protected Object.
  
+This object on the APC Management Web Server is protected and requires a secure socket connection.
+```
+<img src="assets/APC_old_Protected_Object.png" width="400"/>
+
+But when you click there to go to the "secure connection", browsers will refuse to connect with varios messages, depending on the browser:
+- Secure Connection Failed
+- This site can’t provide a secure connection
+- XX.YY.ZZ.LL uses an unsupported protocol
+
+To summarise, the solution is to go through the terminal and configure:
+```
+(2)-Network --> (6)-Web/SSL/TLS --> (2)-SSL/TLS --> (1)-Disabled --> (6)-Accept Changes --> ESC
+(5)-Telnet/SSH --> (2)-Protocol Mode --> (1)-Telnet --> (6)-Accept Changes --> ESC
+```
+
+### Power consumption of APC ap79xx PDU
+Even though these devices are all about the power, their "Product Datasheet" (e.g.: for [ap7900B](https://www.apc.com/us/en/product/AP7900B/rack-pdu-switched-1u-15a-100-120v-8515/)) tells us nothing about how much the device consumes. This data might be of not much relevance for big datacenters where it will be negligeable compared to other loads, but for home lab builders that can make quite a difference: In the area where we live each 10 Watts cunsumed non-stop cost roughly one US dollar per month (10 Watt ~~ $1 USD / month).
+
+Below is the data I measured with the devices at hand, using a bench-top power meter. No load connected to the outlets.
+
+| Device | All outlets OFF | 8 outlets ON | 16 outlets ON |
+|---|---|---|---|
+| ap7900 | 2.8 W | 7.6 W | | 
+| ap7901 | 2.7 W | 7.5 W | |
+| ap7902 | 2.8 W | 7.6 W | 12.5 W |
+
+With less than 3W for the controller and approximately 600mW per relay I'd say it's really good for home (or garage) type of applications.
+
+.
+
 *Happy controlling!*
 
 -- :heart: -- Serge.
