@@ -154,7 +154,7 @@ Should you need a longer pause between certain actions - it's better to invoke t
 The script will record all its actions into a log file `pdu-log.log` in the current directory. The file gets appended with every script invocation. Should you need to use another logging facility and/or functionality - just let me know, or code it away in the `pdulog.py` module.
  
 ### Concurrent sessions
-The PDU series that I tested did seem to like any concurrency of control sessions. Therefore in order to use this project successfully please make sure all the configuration of the unit(s) is done, completed, and sessions are closed or logged-out before the `pdu-commander.py` script invocation.
+The PDU series that I tested didn't seem to like any concurrency of control sessions. Therefore in order to use this project successfully please make sure all the configuration of the unit(s) is done, completed, and sessions are closed or logged-out before the `pdu-commander.py` script invocation.
 
 ## Tested thoroughly with
 - ap7900 - :thumbsup:
