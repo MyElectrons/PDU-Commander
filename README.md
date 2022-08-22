@@ -156,6 +156,13 @@ The script will record all its actions into a log file `pdu-log.log` in the curr
 ### Concurrent sessions
 The PDU series that I tested didn't seem to like any concurrency of control sessions. Therefore in order to use this project successfully please make sure all the configuration of the unit(s) is done, completed, and sessions are closed or logged-out before the `pdu-commander.py` script invocation.
 
+### Give the PDU time to think
+From my experience the AP7000 series PDUs require quite some time for correct and repeatable current and power measurements.
+
+Personally, I'd always give at least 4+ seconds to 8-outlet units and 7+ seconds to 16-outlet ones before reading any measured values.
+
+One can simply inject a `delay:7` command after all the necessary on/off commands were executed and before calling any of `get:current` or `get:power`.
+
 ## Tested thoroughly with
 - ap7900 - :thumbsup:
 - ap7901 - :thumbsup:
