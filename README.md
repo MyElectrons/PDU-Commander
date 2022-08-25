@@ -39,10 +39,10 @@ Outlets: 8
 7: ON    : Outlet 7
 8: ON    : Outlet 8
 ```
-It will use the default APC username and password. See `./pdu-commander.py -h` for all defaults.
+It will use the default APC username and password. See `./pdu-commander.py -h` for defaults.
  
 ### Turn one outlet ON
-Actionable commands consist of a command and its argument, divided by a column ':'
+Actionable commands consist of a command and its argument(s), divided by a column ':'
 <pre>
 <b>./pdu-commander.py on:1</b>
 </pre>
@@ -96,7 +96,7 @@ Outlets: 16
 ('off', '2')
 2: Outlet 2       : Outlet Turned Off
 ```
-Note that the `command:argument` parameters must be passed as a single argument - hence if you like or need to use spaces in them, please remember to put quotes around each `"command : argument"` pair.
+Note that the `command:argument` parameters must be passed as a single command line argument - hence if you'd like or need to use spaces in them, please remember to put quotes around each `"command : argument"` pair.
  
 ### Read current and power, and be quiet
 <pre>
@@ -157,7 +157,7 @@ The script will record all its actions into a log file called `pdu-log.log`, tha
 The PDU series that I tested didn't seem to like any concurrency of control sessions. Therefore in order to use this project successfully please make sure all the configuration of the unit(s) is done, completed, and sessions are closed or logged-out before the `pdu-commander.py` script is called.
 
 ### Give the PDU time to think
-From my experience the AP7000 series PDUs require quite some time for correct and repeatable current and power measurements.
+From my experience the AP7000 series PDUs require quite some time for repeatable current and power measurements.
 
 Personally, I'd always give at least 4+ seconds to 8-outlet units and 7+ seconds to 16-outlet ones before reading any measured values.
 
@@ -233,9 +233,9 @@ To summarise, the solution is to go through the terminal and configure:
 ```
 
 ### Power consumption of APC ap79xx PDU
-Even though these devices are all about the power, their "Product Datasheet" (e.g.: for [ap7900B](https://www.apc.com/us/en/product/AP7900B/rack-pdu-switched-1u-15a-100-120v-8515/)) tells us nothing about how much the device consumes. This data might be of not much relevance for big datacenters where it will be negligeable compared to other loads, but for home lab builders that can make quite a difference: In the area where we live each 10 Watts cunsumed non-stop cost us roughly one US dollar per month (10 Watt ~~ $1 USD / month).
+Even though these devices are all about controlling the power, their "Product Datasheet" (e.g.: for [ap7900B](https://www.apc.com/us/en/product/AP7900B/rack-pdu-switched-1u-15a-100-120v-8515/)) tells us nothing about how much the device itself consumes. This data might be of not much relevance to big datacenters where it will be negligeable compared to other loads, but for home lab builders that can make quite a difference: for example in the area where we live each 10 Watts of electical power cunsumed non-stop cost us roughly one US dollar per month (10 Watt ~~ $1 USD / month).
 
-Below is the data I measured with the devices at hand, using a bench-top power meter. No load connected to the outlets.
+Below is the data I measured with the devices at hand, using a certified bench-top power meter. No load connected to the outlets.
 
 | Device | All outlets OFF | 8 outlets ON | 16 outlets ON |
 |---|---|---|---|
