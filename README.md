@@ -1,6 +1,6 @@
 # Command Line Interface (CLI) and Sequencer with Python (bash, sh, other scripts) integration for APC ap7900 and other compatible Power Distribution Units (PDU)
  
-While AP79xx(b) are versatile PDU devices that provide a variety of access and control options, somehow there was no ready to use **CLI tool** available that one could call from the command line or a script and tell it what sockets to switch on or off on PDU(s), or what to measure.
+While AP79xx(b) are versatile PDU devices that provide a variety of access and control options, somehow there was no ready to use **CLI tool** available that could be **called from the command line or a script** and told what sockets to switch on or off on PDU(s), or what to measure.
  
 There were several sketches I found on the Net, these would potentially make PDU's controllable from scripts, mostly using telnet in conjunction with pexpect, as well as SNMP. However, those were only sketches and still required a lot of tinkering; none of the predecessor projects that I've seen provided even a rudimentary error handling.
  
@@ -12,8 +12,8 @@ This little project covers the power control needs I had. Thanks to it I can now
 All the steps had to be done without any human interactions required - simply because I'd forget about it after a while.
  
 This project can also be used for **power monitoring** purposes. Just keep in mind that the precision of current and power measurements of the AP79xx series is somewhat low (to my taste, Ok?)
-I'd be happy to give it a try and modify and adapt this project for a perfect integration with measured PDU(s). Should you need it implemented fast - *just send a unit that needs to be supported my way*.
-By the way the same applies to another brand and/or SKU of the PDU or UPS or... :wink:
+
+I'd be happy to modify and adapt this project for integrating other models (including other brands) and/or measured PDU(s), UPS, etc. Should you need it implemented fast - *just send a unit that needs to be supported my way*. :wink:
  
 ## Prerequisites
 **python3** version 3.7 and up
@@ -39,10 +39,10 @@ Outlets: 8
 7: ON    : Outlet 7
 8: ON    : Outlet 8
 ```
-It will use the default APC username and password, telnet port 23, 7 seconds for telnet timeouts.
+It will use the default APC username and password. See `./pdu-commander.py -h` for defaults.
  
 ### Turn one outlet ON
-Actionable commands consist of a command and its argument, divided by a column ':'
+Actionable commands consist of a command and its argument(s), divided by a column ':'
 <pre>
 <b>./pdu-commander.py on:1</b>
 </pre>
@@ -82,7 +82,7 @@ There could be as many commands called in one sequence as needed.
 
 ### Connection details can be specified
 <pre>
-<b>./pdu-commander.py -a 192.168.7.242 -u device -p your_password "on: 1-2, 8" "delay: 3" "off: 2"</b>
+<b>./pdu-commander.py -a 192.168.7.242 -u device -p your_password  "on: 1-2, 8"  "delay: 3"  "off: 2"</b>
 </pre>
 ```
 Address: 192.168.7.242
@@ -96,7 +96,7 @@ Outlets: 16
 ('off', '2')
 2: Outlet 2       : Outlet Turned Off
 ```
-Note that the command:argument parameters must be passed as a single argument - hence if you like or need to use spaces in them, please remember to put quotes around each "command : argument" pair.
+Note that the `command:argument` parameters must be passed as a single command line argument - hence if you'd like or need to use spaces in them, please remember to put quotes around each `"command : argument"` pair.
  
 ### Read current and power, and be quiet
 <pre>
@@ -146,18 +146,18 @@ Copyright (c) MyElectrons.com, 2022; https://github.com/MyElectrons/PDU-Commande
 ### Maximum delays
 Each `pdu-commander.py` script invocation opens a single telnet session and executes all commands within that session. That said - the delays cannot be longer than the telnet session timeout (as configured in device settings).
  
-Delays shorter than 60 seconds should be safe to use.
+Delays shorter than 60 seconds are usually safe to use.
  
-Should you need a longer pause between certain actions - it's better to invoke the `pdu-commander.py` again later, after the needed long delay has passed.
+Should you need a longer pause between certain actions - it's better to call the `pdu-commander.py` script again later, after that long delay has passed.
  
 ### Logging
-The script will record all its actions into a log file `pdu-log.log` in the current directory. The file gets appended with every script invocation. Should you need to use another logging facility and/or functionality - just let me know, or code it away in the `pdulog.py` module.
+The script will record all its actions into a log file called `pdu-log.log`, that will be stored in the current directory. The file gets appended with every script invocation. Should you need to use another logging facility and/or functionality - just let me know, or code it away in the `pdulog.py` module.
  
 ### Concurrent sessions
 The PDU series that I tested didn't seem to like any concurrency of control sessions. Therefore in order to use this project successfully please make sure all the configuration of the unit(s) is done, completed, and sessions are closed or logged-out before the `pdu-commander.py` script is called.
 
 ### Give the PDU time to think
-From my experience the AP7000 series PDUs require quite some time for correct and repeatable current and power measurements.
+From my experience the AP7000 series PDUs require quite some time for repeatable current and power measurements.
 
 Personally, I'd always give at least 4+ seconds to 8-outlet units and 7+ seconds to 16-outlet ones before reading any measured values.
 
@@ -198,7 +198,7 @@ The APC spare part number: 0J-940-0144A
 If you look straigh at the APC PDU, pin #1 in RJ12 female connector will be at the bottom:
 <img src="assets/APC_rj12.jpg" width="600"/>
 
-Once ubiquitos "telephone cables" with RJ11 and four wires work perfect for this: just cut one end and solder wires into DB9.
+Once ubiquitos "telephone cables" with four wires and RJ11 connectors work perfectly for making this cable: just cut one end and solder wires into DB9.
 
 ### Notes on network configuration of APC AP79xx PDU
 
@@ -233,9 +233,9 @@ To summarise, the solution is to go through the terminal and configure:
 ```
 
 ### Power consumption of APC ap79xx PDU
-Even though these devices are all about the power, their "Product Datasheet" (e.g.: for [ap7900B](https://www.apc.com/us/en/product/AP7900B/rack-pdu-switched-1u-15a-100-120v-8515/)) tells us nothing about how much the device consumes. This data might be of not much relevance for big datacenters where it will be negligeable compared to other loads, but for home lab builders that can make quite a difference: In the area where we live each 10 Watts cunsumed non-stop cost roughly one US dollar per month (10 Watt ~~ $1 USD / month).
+Even though these devices are all about controlling the power, their "Product Datasheet" (e.g.: for [ap7900B](https://www.apc.com/us/en/product/AP7900B/rack-pdu-switched-1u-15a-100-120v-8515/)) tells us nothing about how much the device itself consumes. This data might be of not much relevance to big datacenters where it will be negligeable compared to other loads, but for home lab builders that can make quite a difference: for example in the area where we live each 10 Watts of electical power cunsumed non-stop cost us roughly one US dollar per month (10 Watt ~~ $1 USD / month).
 
-Below is the data I measured with the devices at hand, using a bench-top power meter. No load connected to the outlets.
+Below is the data I measured with the devices at hand, using a certified bench-top power meter. No load connected to the outlets.
 
 | Device | All outlets OFF | 8 outlets ON | 16 outlets ON |
 |---|---|---|---|
