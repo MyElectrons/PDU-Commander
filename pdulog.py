@@ -14,7 +14,7 @@ logging.basicConfig(filename='pdu-log.log',
                     level=logging.INFO)
 
 
-logging.info("===== Running PDU-Commander CLI =====")
+logging.debug("===== Running PDU-Commander CLI =====")
 
 logger = logging.getLogger('PDU-CLI')
 
