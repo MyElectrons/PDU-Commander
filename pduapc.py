@@ -48,19 +48,21 @@ def apc_pdu_sequencer(cfg=None, seq=None):
             print(ln)
 
     def Display_Result(mlines, getcmd=False, opcode=''):
-        #Debg(mlines)
         mres=''
         for st in mlines.splitlines():
             if re.search(r'E[0-9]{3}', st):
                 err_st = st
             if not re.search(r'OK|APC>|E[0-9]{3}|%s' % (opcode), st):
                 mres += st + '\n'
-        if getcmd or not pdulog.quiet:
-            print(mres)
-        if getcmd:
-            Info('\n' + mres)
+        mres = mres.rstrip()
+        if mres:
+            if getcmd or not pdulog.quiet:
+                print(mres)
+            if getcmd:
+                Info('\n' + mres)
         if 'err_st' in vars() and err_st:
             Warn('Command failed to execute: ' + err_st)
+
 
     if cfg is None:
         cfg = {}
